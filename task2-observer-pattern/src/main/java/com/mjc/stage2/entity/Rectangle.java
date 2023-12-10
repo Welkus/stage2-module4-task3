@@ -1,41 +1,60 @@
 package com.mjc.stage2.entity;
 
-public class Rectangle {
+import com.mjc.stage2.Observable;
+import com.mjc.stage2.Observer;
+import com.mjc.stage2.event.RectangleEvent;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Rectangle implements Observable {
+    @Getter
     private int id;
+    @Getter
     private double sideA;
+    @Getter
     private double sideB;
 
-    // Write your code here!
+   List<Observer> observerList = new ArrayList<>();
     public Rectangle(int id, double sideA, double sideB) {
         this.id = id;
         this.sideA = sideA;
         this.sideB = sideB;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
 
-    public double getSideA() {
-        return sideA;
-    }
-
     public void setSideA(double sideA) {
         this.sideA = sideA;
-        // Write your code here!
-    }
-
-    public double getSideB() {
-        return sideB;
+        notifyObserver();
     }
 
     public void setSideB(double sideB) {
         this.sideB = sideB;
-        // Write your code here!
+        notifyObserver();
     }
-// Write your code here!
+
+    @Override
+    public void addObserver(Observer o) {
+        observerList.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        observerList.remove(o);
+    }
+
+    @Override
+    public void notifyObserver() {
+        RectangleEvent event = new RectangleEvent(this);
+
+        for(Observer o : observerList){
+            o.handleEvent(event);
+        }
+
+    }
+
 }
