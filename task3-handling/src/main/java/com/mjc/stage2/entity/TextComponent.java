@@ -13,12 +13,16 @@ public class TextComponent extends AbstractTextComponent{
 
     @Override
     public String operation() {
-StringBuilder sb = new StringBuilder();
-    componentList.forEach(sb::append);
-    if(componentType != TextComponentType.SYMBOL){
-        sb.append(componentType.getDelimiter());
-    }
-    return sb.toString();
+        StringBuilder sb = new StringBuilder();
+
+        componentList.forEach(t -> {
+            sb.append(t.operation());
+            if(t instanceof TextComponent && t.getComponentType() == TextComponentType.WORD) {
+                sb.append(" ");
+            }
+        });
+
+        return sb.toString().trim();
     }
 
     @Override
