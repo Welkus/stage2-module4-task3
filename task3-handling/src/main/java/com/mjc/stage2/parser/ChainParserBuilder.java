@@ -11,6 +11,7 @@ public class ChainParserBuilder {
 
     public ChainParserBuilder setParser(AbstractTextParser abstractTextParser) {
        parsers.add(abstractTextParser);
+       return this;
     }
 
     public AbstractTextParser build() {
