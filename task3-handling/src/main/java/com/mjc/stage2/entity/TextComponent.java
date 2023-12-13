@@ -7,8 +7,10 @@ public class TextComponent extends AbstractTextComponent{
     protected List<AbstractTextComponent> componentList = new ArrayList<>();
     private int size = 0;
 
-    public TextComponent(TextComponentType componentType) {
+
+    public TextComponent(TextComponentType componentType, List<AbstractTextComponent> componentList) {
         super(componentType);
+        this.componentList = componentList;
     }
 
     @Override
@@ -27,18 +29,17 @@ public class TextComponent extends AbstractTextComponent{
 
     @Override
     public void add(AbstractTextComponent textComponent) {
-    componentList.add(textComponent);
-
+        componentList.add(textComponent);
     }
 
     @Override
     public void remove(AbstractTextComponent textComponent) {
-    componentList.remove(textComponent);
+
     }
 
     @Override
     public int getSize() {
-        return componentList.stream().mapToInt(AbstractTextComponent::getSize).sum();
+        return 0;
     }
 
 }
