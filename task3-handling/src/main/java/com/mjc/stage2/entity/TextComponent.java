@@ -16,12 +16,12 @@ public class TextComponent extends AbstractTextComponent{
     public String operation() {
         StringBuilder sb = new StringBuilder();
 
-        for (AbstractTextComponent component : componentList){
-           sb.append(component.operation());
-           if (component.getComponentType() == TextComponentType.WORD){
-               sb.append(" ");
-           }
-        }
+        componentList.forEach(c -> {
+            sb.append(c.operation());
+            if(c instanceof TextComponent && c.getComponentType() == TextComponentType.WORD) {
+                sb.append(" ");
+            }
+        });
 
         return sb.toString().trim();
     }
@@ -41,5 +41,5 @@ public class TextComponent extends AbstractTextComponent{
     public int getSize() {
         return 0;
     }
-// Write your code here!
+
 }
