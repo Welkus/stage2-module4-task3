@@ -15,10 +15,11 @@ public class LexemeParser extends AbstractTextParser {
 
         String[] wordsList = string.split(LEXEME_REGEX);
         for(String word : wordsList){
-            AbstractTextComponent lexemComp = new TextComponent(TextComponentType.WORD, new ArrayList<>());
+            AbstractTextComponent lexemComp = new TextComponent(TextComponentType.WORD);
             nextParser.parse(lexemComp,word);
             abstractTextComponent.add(lexemComp);
 
         }
     }
+
 }

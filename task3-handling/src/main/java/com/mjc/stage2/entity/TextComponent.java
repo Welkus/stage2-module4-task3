@@ -8,7 +8,7 @@ public class TextComponent extends AbstractTextComponent{
     private int size = 0;
 
 
-    public TextComponent(TextComponentType componentType, List<AbstractTextComponent> componentList) {
+    public TextComponent(TextComponentType componentType) {
         super(componentType);
         this.componentList = componentList;
     }
