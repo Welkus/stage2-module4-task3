@@ -9,10 +9,6 @@ public class SymbolLeaf extends AbstractTextComponent{
         this.value = value;
     }
 
-    public SymbolLeaf(TextComponentType componentType) {
-        super(componentType);
-    }
-
     @Override
     public String operation() {
         return String.valueOf(value);
@@ -30,7 +26,8 @@ public class SymbolLeaf extends AbstractTextComponent{
 
     @Override
     public int getSize() {
-        return 1;
+        return 0;
     }
 
+    // Write your code here!
 }
